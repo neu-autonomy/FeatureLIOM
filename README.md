@@ -38,11 +38,6 @@ We present detailed maps of the Northeastern University Campus and Newer College
 |   Cloister    |   0.092  |          5.19          |     24.3        |
 |   Park        |   0.342  |          8.52          |     47.03       |
 
-<style>
-td, th {
-   border: none!important;
-}
-</style>
 
 | <img src="./images/newer_college/short.png" width="360"/> | <img src="./images/newer_college/long.png" width="360"/> |
 | ----- | ----- |
