@@ -8,13 +8,29 @@
 
 ## About
 
-This repository contains the official implementation of the feature extractor network and ros2 node proposed in paper "LiDAR Inertial Odometry and Mapping Using Learned Registration-Relevant Features". It achieves robust and efficient real-time LiDAR Inertial Odometry using a light-weight neural network based feature extractor, as opposed to previous feature-based methods that relies on hand-crafted heuristics and parameters. More detailed maps are shown in the next section.
+This repository contains the official implementation of the feature extractor network and ros2 node proposed in paper "LiDAR Inertial Odometry and Mapping Using Learned Registration-Relevant Features". It achieves robust and efficient real-time LiDAR Inertial Odometry using a light-weight neural network based feature extractor, as opposed to previous feature-based methods that relies on hand-crafted heuristics and parameters. More detailed maps are shown in the last section.
 
 <br>
 <p align='center'>
     <img src="./images/map_neu.png" alt="NEU Campus" width="360" height="230"/>
     <img src="./images/map.png" alt="Newer College Short" width="300"  height="230"/>
 </p>
+
+## Dependencies
+
+**Coming Soon**
+
+## Prerequisite
+
+**Coming Soon**
+
+## Running
+
+**Coming Soon**
+
+## Other Datasets
+
+**Comingn Soon**
 
 ## Generated Maps
 
