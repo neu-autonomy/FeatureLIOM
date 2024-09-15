@@ -169,4 +169,4 @@ We present detailed maps of the Northeastern University Campus and Newer College
 
 ## Acknowledgement
 
-We would also like to thank Alexander Estornell, Sahasrajit Anantharamakrishnan, and Yash Mewada for setting up the scout robot hardware, and Hanna Zhang, David Thorne, Yanlong Ma, Kenny Chen, and Nakul Joshi for help with data collection and comments.
+We would also like to thank Alexander Estornell, Sahasrajit Anantharamakrishnan, and Yash Mewada for setting up the scout robot hardware, and Hanna Zhang, Yanlong Ma, Kenny Chen, and Nakul Joshi for help with data collection and comments.
