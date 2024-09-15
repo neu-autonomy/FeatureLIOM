@@ -41,7 +41,7 @@ We present detailed maps of the Northeastern University Campus and Newer College
 | Sequence      |   RMSE   | Resident Set Size (GB) |   Runtime (ms)  |
 | --------      | -------- | ---------------------- | --------------- |
 |   Short       |   0.409  |          5.45          |     36.64       |
-|   Mount       |   0.195  |          3.99          |     35.67       |
+|   Mount       |   0.188  |          3.99          |     35.67       |
 |   Spin        |   0.109  |          0.74          |     41.85       |
 |   Quad w. Dyn |   0.147  |          1.71          |     37.07       |
 |   Long        |   0.398  |          6.59          |     39.52       |
