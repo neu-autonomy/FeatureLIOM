@@ -13,6 +13,13 @@
     <depend>sensor_msgs</depend>
     <depend>sensor_msgs_py</depend>
 
+    <build_depend>launch</build_depend>
+    <build_depend>launch_ros</build_depend>
+    <build_depend>ament_index_python</build_depend>
+    <exec_depend>launch</exec_depend>
+    <exec_depend>launch_ros</exec_depend>
+    <exec_depend>ament_index_python</exec_depend>
+
     <!-- Add any additional ROS2 dependencies here -->
 
     <export>

@@ -1,4 +1,8 @@
 from setuptools import setup, find_packages
+import os
+from glob import glob
+
+package_name = 'FeatureLIOM'
 
 setup(
     name = "FeatureLIOM",
@@ -15,7 +19,12 @@ setup(
     license = "MIT",
     entry_points = {
         'console_scripts': [
-            'extract = keypoint_node.keypoint_node:main',
+            'keypoint_node = keypoint_node.keypoint_node:main',
         ],
-    }
+    },
+    data_files=[
+        ('share/FeatureLIOM/launch', glob('launch/*.launch.py')),
+        ('share/FeatureLIOM', ['package.xml']),
+        (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
+    ],
 )

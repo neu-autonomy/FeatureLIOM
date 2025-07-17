@@ -1,0 +1,6 @@
+KeypointNode:
+  ros__parameters:
+    use_model: true
+    bimodal_cfg: "src/FeatureLIOM/config/bimodal_NCL_Pretrained_Match.yaml"
+    mode: "bimodal"
+    lidar_range: 128.0
