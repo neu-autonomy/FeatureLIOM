@@ -1,18 +1,12 @@
 numpy==1.24.3
 open3d==0.18.0
-rcl-interfaces==1.2.1
-rclpy==3.3.12
-ruamel-yaml-conda @ file:///croot/ruamel_yaml_1667489728852/work
 ruamel.yaml==0.18.5
 ruamel.yaml.clib==0.2.8
 scikit-learn==1.4.0
 scipy==1.11.4
-sensor-msgs==4.2.3
-sensor-msgs-py==4.2.3
-std-msgs==4.2.3
-torch==2.1.0+cu118
-torchaudio==2.1.0+cu118
+torch==2.1.0
+torchaudio==2.1.0
 torcheval==0.0.7
-torchvision==0.16.0+cu118
+torchvision==0.16.0
 tornado==6.4
 tqdm==4.66.1
