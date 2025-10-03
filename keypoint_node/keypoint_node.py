@@ -19,6 +19,8 @@ from model.bimodal_compressor import BimodalCompressor
 from model.handcrafted_feature_extractor import compute_smoothness
 from model.utils import gridSampling
 
+from rclpy.qos import qos_profile_sensor_data
+
 
 '''
 Read point cloud from newer college dataset ply files
@@ -43,7 +45,8 @@ class KeypointNode(Node):
     lidar_range          : sensing range of the used LiDAR
     '''
     def __init__(self,
-        pcd_topic="/dliom/odom_node/compress",
+        # pcd_topic="/dliom/odom_node/compress",
+        pcd_topic="/ouster/points",
         downsampled_topic="/PointRec/descriptor_cloud",
         use_model=False,
         cfg="src/FeatureLIOM/config/bimodal_NCL_Pretrained_Match.yaml",
@@ -65,13 +68,13 @@ class KeypointNode(Node):
             PointCloud2,
             topic=pcd_topic,
             callback=self.pcd_callback,
-            qos_profile=1
+            qos_profile=qos_profile_sensor_data
         )
 
         self.compressed_pub = self.create_publisher(
             Int32MultiArray,
             topic=downsampled_topic,
-            qos_profile=1
+            qos_profile=qos_profile_sensor_data
         )
 
         self.scan_cnt = 0
@@ -289,7 +292,8 @@ class KeypointNode(Node):
     
 
 def main(
-    pcd_topic="/dliom/odom_node/compress",
+    # pcd_topic="/dliom/odom_node/compress",
+    pcd_topic="/ouster/points",
     downsampled_topic="/PointRec/descriptor_cloud",
     use_model=True,
     bimodal_cfg="src/FeatureLIOM/config/bimodal_NCL_Pretrained_Match.yaml",
