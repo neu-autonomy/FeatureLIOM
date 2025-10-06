@@ -46,6 +46,7 @@ class KeypointNode(Node):
     '''
     def __init__(self,
         # pcd_topic="/dliom/odom_node/compress",
+        # pcd_topic="/dlio/odom_node/pointcloud/deskewed",
         pcd_topic="/ouster/points",
         downsampled_topic="/PointRec/descriptor_cloud",
         use_model=False,
@@ -242,24 +243,41 @@ class KeypointNode(Node):
         print(f"original cloud size: {dense_size}, compresed cloud size: {all_indices.shape[0]}. Runtime {runtime}s.")
                 
 
-    def msg_to_torch_pcd(self, msg):
+    # def msg_to_torch_pcd(self, msg):
+    #     point_cloud = point_cloud2.read_points(
+    #         msg,
+    #         skip_nans=True,
+    #         field_names=["x", "y", "z", "intensity", "t", "ring"],
+    #         reshape_organized_cloud=True
+    #     )
+    #     points = np.hstack([
+    #         point_cloud['x'].reshape(-1, 1),
+    #         point_cloud['y'].reshape(-1, 1),
+    #         point_cloud['z'].reshape(-1, 1)
+    #     ])
+    #     rings = point_cloud['ring'].reshape(-1, 1)
+    #     return torch.from_numpy(points).float().cuda(), torch.from_numpy(rings).float().cuda()
 
-        point_cloud = point_cloud2.read_points(
+    def msg_to_torch_pcd(self, msg):
+        pc = point_cloud2.read_points(
             msg,
-            skip_nans=True,
+            skip_nans=False,  # keep all points so size == width*height
             field_names=["x", "y", "z", "intensity", "t", "ring"],
             reshape_organized_cloud=True
         )
+        pc = np.ma.filled(pc, np.nan) 
+        mask = np.isfinite(pc['x']) & np.isfinite(pc['y']) & np.isfinite(pc['z'])
 
-        points = np.hstack([
-            point_cloud['x'].reshape(-1, 1),
-            point_cloud['y'].reshape(-1, 1),
-            point_cloud['z'].reshape(-1, 1)
-        ])
+        x = pc['x'].ravel()[mask.ravel()]
+        y = pc['y'].ravel()[mask.ravel()]
+        z = pc['z'].ravel()[mask.ravel()]
+        ring = pc['ring'].ravel()[mask.ravel()]
 
-        rings = point_cloud['ring'].reshape(-1, 1)
+        points = np.column_stack([x, y, z])
+        rings = ring.reshape(-1, 1).astype(np.float32)
 
         return torch.from_numpy(points).float().cuda(), torch.from_numpy(rings).float().cuda()
+
     
 
     def convert_to_pc2_msg(self, points, frame_id='odom'):
@@ -293,6 +311,7 @@ class KeypointNode(Node):
 
 def main(
     # pcd_topic="/dliom/odom_node/compress",
+    # pcd_topic="/dlio/odom_node/pointcloud/deskewed",
     pcd_topic="/ouster/points",
     downsampled_topic="/PointRec/descriptor_cloud",
     use_model=True,
