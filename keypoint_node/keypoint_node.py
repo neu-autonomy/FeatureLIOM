@@ -69,13 +69,15 @@ class KeypointNode(Node):
             PointCloud2,
             topic=pcd_topic,
             callback=self.pcd_callback,
-            qos_profile=qos_profile_sensor_data
+            #qos_profile=qos_profile_sensor_data
+            qos_profile=1
         )
 
         self.compressed_pub = self.create_publisher(
             Int32MultiArray,
             topic=downsampled_topic,
-            qos_profile=qos_profile_sensor_data
+            #qos_profile=qos_profile_sensor_data
+            qos_profile=1
         )
 
         self.scan_cnt = 0
@@ -310,9 +312,9 @@ class KeypointNode(Node):
     
 
 def main(
-    # pcd_topic="/dliom/odom_node/compress",
-    # pcd_topic="/dlio/odom_node/pointcloud/deskewed",
-    pcd_topic="/ouster/points",
+    pcd_topic="/dliom/odom_node/compress",
+    # pcd_topic="/dliom/odom_node/pointcloud/deskewed",
+    # pcd_topic="/ouster/points",
     downsampled_topic="/PointRec/descriptor_cloud",
     use_model=True,
     bimodal_cfg="src/FeatureLIOM/config/bimodal_NCL_Pretrained_Match.yaml",
